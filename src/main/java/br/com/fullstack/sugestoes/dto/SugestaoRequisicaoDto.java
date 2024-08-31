@@ -5,15 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Schema(description = "Sugestões - Objeto para criação")
-public class SugestaoRequisicaoDto {
+public record SugestaoRequisicaoDto (
 
     @NotBlank
     @Schema(description = "Título da sugestão", example = "Satisfeito com a Empresa")
-    private String titulo;
+    String titulo,
 
     @Schema(description = "Descrição da sugestão", example = "A melhor empresa do mundo! MAASSSSS...")
-    private String descricao;
+    String descricao
 
-}
+){}

@@ -1,12 +1,17 @@
 package br.com.fullstack.sugestoes.entidades;
 
+import br.com.fullstack.sugestoes.dto.ComentarioRequisicaoDto;
+import br.com.fullstack.sugestoes.dto.SugestaoRequisicaoDto;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "comentarios")
 public class Comentario {
 
@@ -24,4 +29,7 @@ public class Comentario {
     @Column(nullable = false, length = 512)
     private String texto;
 
+    public Comentario(ComentarioRequisicaoDto dto) {
+        BeanUtils.copyProperties(dto, this);
+    }
 }
